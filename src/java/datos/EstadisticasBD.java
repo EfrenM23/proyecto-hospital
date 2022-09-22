@@ -80,11 +80,11 @@ public class EstadisticasBD {
     public boolean agregarEmpleado(Empleado empleado) {
         boolean estado = false;
         Statement consultaSQL;
-        String q = "INSERT INTO empleados VALUES(" + "'" + empleado.getMatricula() + "',"
-                + "'" + empleado.getNombre() + "'," + empleado.getEdad() + ")";
+        String q = "INSERT INTO empleados VALUES(" + empleado.getNumEmpleado() + ","
+                + "'" + empleado.getNombre() + "'," +  empleado.getEdad() + "'" + empleado.getSexo() + "'," + empleado.getSalario() +")";
         /*
             INSERT INTO empleados
-            VALUES ('21023213', 'Matias', 22);
+            VALUES (1,'Juan Cabrera Ortiz', 25, 'Masculino', 15.315);
          */
         try {
             consultaSQL = conexion.createStatement();
@@ -117,10 +117,10 @@ WHERE matricula='215956'*/
         return estado;
     }
 
-    public boolean eliminarEmpleado(String matricula) {
+    public boolean eliminarEmpleado(String numEmpleado) {
         boolean estado = false;
         Statement consultaSQL;
-        String q = "DELETE FROM empleados WHERE matricula=" + "'" + matricula + "'";
+        String q = "DELETE FROM empleados numEmpleado=" + "'" + numEmpleado + "'";
         try {
             consultaSQL = conexion.createStatement();
             consultaSQL.execute(q);
