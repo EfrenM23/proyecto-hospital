@@ -14,13 +14,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.Empleado;
-import modelo.Medicamento;
 
 /**
  *
  * @author Profesor
  */
-public class EstadisticasBD {
+public class ControladorBD {
 
     private static final String USUARIO = "root";
     private static final String PSWD = "root";
@@ -97,25 +96,6 @@ public class EstadisticasBD {
         return estado;
     }
 
-    public boolean actualizarEmpleado(Empleado em) {
-        boolean estado = false;
-        Statement consultaSQL;
-        String q = "UPDATE empleados SET matricula=" + "'" + em.getMatricula() + "'" + ",nombre=" + "'" + em.getNombre() + "'"
-                + ",edad=" + em.getEdad()
-                + "WHERE matricula =" + "'" + em.getMatricula() + "'";
-        /*      UPDATE alumnos SET matricula="111111", nombre='Carlos', edad=30 
-WHERE matricula='215956'*/
-        try {
-            consultaSQL = conexion.createStatement();
-            int r = consultaSQL.executeUpdate(q);
-            if (r != 0) {
-                estado = true;
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error " + ex.getMessage());
-        }
-        return estado;
-    }
 
     public boolean eliminarEmpleado(String numEmpleado) {
         boolean estado = false;
